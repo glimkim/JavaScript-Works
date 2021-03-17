@@ -10,11 +10,15 @@ function clock(){
     var day = document.getElementById('weekday');
     var date = document.getElementsByTagName('h3');
     
-    for(var i in time){
-        date[i].textContent = clockDate[i];
-    }
     for(var i in date){
-        if(clockTime[i] > 10){
+        if(clockDate[i] >= 10){
+            date[i].textContent = clockDate[i];
+        }else{
+            date[i].textContent = '0' + clockDate[i];
+        }
+    }
+    for(var i in time){
+        if(clockTime[i] >= 10){
             time[i].textContent = clockTime[i];
         }else{
             time[i].textContent = '0' + clockTime[i];
