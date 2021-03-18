@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Join Me</title>
+
+        <link rel="stylesheet" href="join.css">
+    </head>
+    <body>
+        <div class="join">
+            <h1>Join Me</h1>
+            <form action="#join" name="join_form">
+                <label for="id">ID</label>
+                <div>
+                    <span class="id_box">
+                        <input type="text" id="id" name="id" required onblur="idcheck()">
+                        <span>&#64;joinme.com</span>
+                    </span>
+                    <p id="alert_id"></p>
+                </div>
+                <label for="pw">PASSWORD</label>
+                <div>
+                    <span class="pw_box">
+                        <input type="password" id="pw" name="pw" required onblur="pwcheck()">
+                        <span id="locker01"></span>
+                    </span>
+                    <p id="alert_pw">Please use 8 to 16 uppercase and lowercase letters, numbers, and special characters.</p>
+                </div>
+                <label for="pw_check">PASSWORD CHECK</label>
+                <div>
+                    <span class="pw_check">
+                        <input type="password" id="pw_check" required onblur="pwMatch()">
+                        <span id="locker02"></span>
+                    </span>
+                    <p id="alert_pw_check">비밀번호가 일치하지 않습니다.</p>
+                </div>
+                <label for="name">FULL NAME</label>
+                <input type="text" id="name" name="name" required>
+                <label for="dob">DAY OF BIRTH</label>
+                <div class="dayofbirth">
+                    <select name="byear" id="byear"></select>-
+                    <select name="bmonth" id="bmonth" onchange="getLastDay()"></select>-
+                    <select name="bdate" id="bdate"></select>
+                </div>
+                <label for="gender">GENDER</label>
+                <select name="gender" id="gender">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="female">Other</option>
+                </select>
+                <label for="email">E-MAIL</label>
+                <div class="email">
+                    <input type="text" name="email" id="email">
+                </div>
+                <label for="phone">PHONE</label>
+                <div class="phone">
+                    <input type="text" name="phone" id="phone">
+                </div>
+                <button type="submit" onclick="submitClick()">JOIN NOW</button>
+            </form>
+        </div>
+        <script>
+            function idcheck(){
+                var id_v = document.getElementById('id').value;
+                var text = document.getElementById('alert_id');
+                if(!id_v.length > 0){
+                    text.style.display = 'block';
+                    text.style.color = 'red';
+                    text.textContent = 'This area is required.';
+                }else{
+                    text.style.display = 'none';
+                    text.textContent = '';
+                }
+
+                var idReg = /^[a-z]+[a-z0-9]{5,19}$/g;
+                if(!idReg.test(id_v)){
+                    text.style.display = 'block';
+                    text.style.color = 'red';
+                    text.textContent = 'This id is already taken or unavailable.';
+                }else{
+                    text.style.display = 'block';
+                    text.style.color = 'green';
+                    text.textContent = 'Excellent id!';
+                }
+            }
+
+            function pwcheck(){
+                var pw_v = document.getElementById('pw').value;
+                var text = document.getElementById('alert_pw');
+                var locker = document.getElementById('locker01');
+
+                var pwReg = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,10}/;
+
+                if(!pwReg.test(pw_v)){
+                    text.style.display = 'block';
+                    locker.style.backgroundPosition = '0 -50px';
+                }else{
+                    text.style.display = 'none';
+                    locker.style.backgroundPosition = '-100px 0';
+                }
+            }
+
+            function pwMatch(){
+            var pw_v = document.getElementById('pw').value;
+            var pwcheck_v = document.getElementById('pw_check').value;
+            var text = document.getElementById('alert_pw_check');
+            var locker2 = document.getElementById('locker02');
+
+                if(!pw_v == pwcheck_v){
+                    text.style.display = 'block';
+                    locker2.style.backgroundPosition = '-100px -50px';
+                }else{
+                    text.style.display = 'none';
+                    locker2.style.backgroundPosition = '-150px 0';
+                }
+            }
+
+            const today = new Date();
+            const thisYear = today.getFullYear();
+            const year = document.getElementById('byear');
+            for(var i=thisYear;i>=1920;i--){
+                year.innerHTML += '<option>' + i + '</option>';
+            }
+
+            const month = document.getElementById('bmonth');
+            for(var i=1;i<=12;i++){
+                month.innerHTML += '<option>' + i + '</option>';
+            }
+
+            function getLastDay(){
+                var lastDate = new Date(thisYear, month.value, 0).getDate();
+                const date = document.getElementById('bdate');
+                for(var i=1;i<=lastDate;i++){
+                    date.innerHTML += '<option>' + i + '</option>';
+                }
+            }
+            getLastDay();
+               
+        </script>
+    </body>
+</html>
