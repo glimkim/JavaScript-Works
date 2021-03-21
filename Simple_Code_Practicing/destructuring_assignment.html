@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+
+        <script>
+            /* destructuring arrays */
+            //01
+            const [lily, tulip, rose] = ['Lily', 'Tulip', 'Rose'];
+            console.log(lily);
+            console.log(tulip);
+            console.log(rose);
+
+            //02
+            const flowers = ['Lavender', 'Cosmos', 'Orchid'];
+            const [lavender, ...restFlowers] = flowers;
+            console.log(lily);
+            console.log(restFlowers);
+
+            //03
+            const roses = ['red roses', 'pink roses', 'white roses', 'yellow roses'];
+            const [red, pink, white, yellow] = roses;
+            console.log(red);
+            console.log(yellow);
+
+            //04
+            const [flower01, flower02, flower03, flower04 = `Catmint`] = [`Clematis`, `Wisteria`, `Alliums`];
+            console.log(flower01);
+            console.log(flower04);
+
+            /* destructuring objects */
+            //01
+            const {name01, breed01, gender01} = {
+                name01: 'Mimi',
+                breed01: 'Golden Retriever',
+                gender01 : 'male'
+            }
+            console.log(`${name01} is a ${gender01} dog. He is a ${breed01}!`);
+
+            //02
+            const {name02, ...restFeatures} = {
+                name02 : 'Coco',
+                breed02: 'Labrador Retriever',
+                gender02: 'female'
+            }
+            console.log(restFeatures);
+
+            //03
+            const {name03, breed03, gender03, distinction = 'super cute'} = {
+                name03 : 'Mango',
+                breed03: 'Toy Puddle',
+                gender03: 'female'
+            }
+            console.log(distinction);
+
+            //04
+            const doggie = {
+                name04 : 'Mong',
+                breed04 : 'Boder Collie',
+                gender04 : 'male'
+            }
+            const {name04, breed04, gender04} = doggie;
+
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>
