@@ -5,23 +5,34 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
+
+        <link rel="stylesheet" href="css/chat.css">
     </head>
     <body>
         <div class="wrapper">
             <div class="userContainer">
-                <label for="nickname">대화명 </label><input type="text" id="nickname">
+                <label for="nickname">대화명</label><input type="text" id="nickname">
             </div>
-            <div class="display-container">
+            <div class="displayContainer">
                 <ul class="chatList">
-                   
+                    <li>
+                        <span class="profile">
+                            <span class="user">깔깔</span>
+                            <img src="https://placeimg.com/50/50/any" alt="any">
+                        </span>
+                        <span class="message">Hello World</span>
+                        <span class="time">2:10pm</span>
+                    </li>
                 </ul>  
             </div>
-            <div class="input-container">
-                <label for="cahtInput away">채팅창</label><input type="text" id="cahtInput">
-                <button class="send">전송</button>
+            <div class="inputContainer">
+                <span>
+                    <label for="cahtInput away">채팅창</label><input type="text" id="cahtInput">
+                    <button class="send">전송</button>
+                </span>
             </div>
         </div>
-        <script src="/socket.io/socket.io.js"></script> 
-        <script src="js/chat.js"></script>
+      <!--   <script src="/socket.io/socket.io.js"></script> 
+        <script src="js/chat.js"></script> -->
     </body>
 </html>

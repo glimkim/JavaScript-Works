@@ -1,0 +1,14 @@
+@charset "UTF-8";
+
+*{margin:0; padding:0; font-size:16px;}
+
+html, body{ width:100vw; height:100vh; }
+.wrapper{ width:100%; height:100%; display:flex; flex-direction:column; overflow:hidden; }
+
+.userContainer{ flex:1; width:100%; display:flex; justify-content:space-between; align-items:center; padding:10px; box-sizing:border-box; background-color:#fff; border-bottom:1px solid #ccc; }
+.userContainer label{flex:2; margin-left:20px;}
+#nickname{ flex:8; height:2rem; border:1px solid #ccc; margin-right:20px;}
+
+.displayContainer{ flex:12; padding:20px 10px; box-sizing:border-box; background-color:rgb(255, 228, 233); }
+
+.inputContainer{ flex:2; padding:10px; box-sizing:border-box;} 
