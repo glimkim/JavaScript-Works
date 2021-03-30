@@ -1,14 +1,32 @@
 @charset "UTF-8";
 
-*{margin:0; padding:0; font-size:16px;}
+*{margin:0; padding:0; font-size:16px; color:#333; }
 
 html, body{ width:100vw; height:100vh; }
 .wrapper{ width:100%; height:100%; display:flex; flex-direction:column; overflow:hidden; }
 
-.userContainer{ flex:1; width:100%; display:flex; justify-content:space-between; align-items:center; padding:10px; box-sizing:border-box; background-color:#fff; border-bottom:1px solid #ccc; }
-.userContainer label{flex:2; margin-left:20px;}
-#nickname{ flex:8; height:2rem; border:1px solid #ccc; margin-right:20px;}
+.userContainer{ flex:1; width:100%; display:flex; align-items:center; padding:10px; box-sizing:border-box; background-color:rgb(255, 245, 200); border-bottom:1px solid rgb(255, 208, 55) }
+.userContainer label{ margin-right:20px; text-align:center;}
+#nickname{ flex:6; padding:5px; box-sizing:border-box; border:1px solid rgb(255, 208, 55); border-radius:5px;}
 
-.displayContainer{ flex:12; padding:20px 10px; box-sizing:border-box; background-color:rgb(255, 228, 233); }
+.displayContainer{ flex:12; padding:20px 10px; box-sizing:border-box; background-color:rgb(255, 208, 55); }
+.displayContainer figure{ width:3rem; height:3rem; border-radius:3rem; ; background-color:wheat; }
 
-.inputContainer{ flex:2; padding:10px; box-sizing:border-box;} 
+.chatList{  width:100%; height:100%; }
+.chatList li{ display:flex; justify-content:flex-start; align-items:flex-end; padding:10px; }
+.profile{ display:flex; align-items:center; }
+.user{ font-weight:bold; }
+.profile figure{ margin-right:10px; overflow:hidden;  margin-left:0.5rem; }
+.message{ display:flex; align-items:flex-end; }
+.message .contents{ padding:10px; box-sizing:border-box; border-radius:8px; background-color:#fff; }
+.time{ padding:0 10px 4px; font-size:0.875rem; color:#666; }
+
+.inputContainer{ flex:1; padding:5px; box-sizing:border-box;}
+.inputContainer span{ display:flex; width:100%; height:100%; align-items:center; }
+.inputContainer label{ position:absolute; left:-999em; }
+#chatInput{ flex:8; height:100%; margin-right:10px; padding:5px; box-sizing:border-box; border:none; border-radius:5px;  }
+.send{ flex:1; height:100%; box-sizing:border-box; border:1px solid rgb(255, 208, 55); border-radius:5px; background-color:rgb(255, 245, 200); }
+
+.sent{ flex-direction:row-reverse; }
+.sent .message{ background-color: rgb(255, 245, 200); }
+.recived .message{ background-color: #fff; }
