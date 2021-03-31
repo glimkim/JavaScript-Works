@@ -9,14 +9,14 @@ html, body{ width:100vw; height:100vh; }
 .userContainer label{ margin-right:20px; text-align:center;}
 #nickname{ flex:6; padding:5px; box-sizing:border-box; border:1px solid rgb(255, 208, 55); border-radius:5px;}
 
-.displayContainer{ flex:12; padding:20px 10px; box-sizing:border-box; background-color:rgb(255, 208, 55); }
-.displayContainer figure{ width:3rem; height:3rem; border-radius:3rem; ; background-color:wheat; }
+.displayContainer{ flex:12; padding:20px 10px; box-sizing:border-box; background-color:rgb(255, 208, 55); overflow-y:auto;}
 
 .chatList{  width:100%; height:100%; }
 .chatList li{ display:flex; justify-content:flex-start; align-items:flex-end; padding:10px; }
 .profile{ display:flex; align-items:center; }
 .user{ font-weight:bold; }
-.profile figure{ margin-right:10px; overflow:hidden;  margin-left:0.5rem; }
+.profile figure{ width:3rem; height:3rem; margin:0 10px; border-radius:50%; overflow:hidden; }
+.profile figure img{ object-fit:cover; }
 .message{ display:flex; align-items:flex-end; }
 .message .contents{ padding:10px; box-sizing:border-box; border-radius:8px; background-color:#fff; }
 .time{ padding:0 10px 4px; font-size:0.875rem; color:#666; }
@@ -27,6 +27,6 @@ html, body{ width:100vw; height:100vh; }
 #chatInput{ flex:8; height:100%; margin-right:10px; padding:5px; box-sizing:border-box; border:none; border-radius:5px;  }
 .send{ flex:1; height:100%; box-sizing:border-box; border:1px solid rgb(255, 208, 55); border-radius:5px; background-color:rgb(255, 245, 200); }
 
-.sent{ flex-direction:row-reverse; }
-.sent .message{ background-color: rgb(255, 245, 200); }
-.recived .message{ background-color: #fff; }
+.sent, .sent .message, .sent .profile{ flex-direction:row-reverse; }
+.sent .contents{ background-color: rgb(255, 245, 200); }
+.recived .contents{ background-color: #fff; }
