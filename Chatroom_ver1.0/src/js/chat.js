@@ -1,7 +1,7 @@
 'use strict'
 const socket = io();
 const nickname = document.querySelector('#nickname');
-const nextButton = document.querySelector('#next');
+const nextButton = document.querySelector('#next01');
 const select01 = document.querySelector('.select01');
 
 const chatRoom = document.querySelector('.chatRoom');
@@ -22,7 +22,7 @@ nextButton.addEventListener('click', () => {
 });
 
 socket.on('inAlert', (data) => {
-    const inAlert = document.createElement('div');
+    const inAlert = document.createElement('li');
     inAlert.classList.add('inAlert');
     inAlert.innerText = `${data.name} joined`;
     chatList.appendChild(inAlert);
@@ -40,11 +40,14 @@ function LiModel(name, msg, time){
 
     this.makeLi = () => {
         const li = document.createElement('li');
-        /* li.classList.add(nickname.value==this.name?'sent':'received'); */
+        li.classList.add(nickname.value==this.name?'sent':'received');
         const dom = 
         `
         <div class="profile">
-           ${this.name}
+            <span class="user">${this.name}</span>
+            <figure>
+                <img src="https://placeimg.com/50/50/any" alt="any image">
+            </figure>
         </div>
         <div class="message">
             <span class="contents">${this.msg}</span>
