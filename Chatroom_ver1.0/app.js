@@ -28,5 +28,5 @@ io.on('connection', (socket) => { //서버쪽
             msg,
             time: moment(new Date()).format('h:mm A')
         });
-    }); //chat.js에 사용한 socket 내용 불러오기
+    });
 });
