@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+    <html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+
+        <link rel="stylesheet" href="css/chat.css">
+    </head>
+    <body>
+        <div class="wrapper">
+            <header>
+                <img src="images/logo_simple.png" alt="로고">
+            </header>
+            <div class="select01">
+                <div class="wrap">
+                    <label for="nickname">Enter your nickname.</label>
+                    <input type="text" name="nickname" id="nickname">
+                    <button type="submit" id="next">Next</button>
+                </div>
+            </div>
+            <div class="chatRoom">
+                <div class="displayContainer">
+                    <ul class="chatList">
+                        
+                    </ul>
+                </div>
+                <div class="inputContainer">
+                    <label class="away">채팅창</label>
+                    <input type="text" id="message">
+                    <button id="send">Send</button>
+                </div>
+            </div>
+        </div>
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="js/chat.js"></script>
+    </body>
+</html>
