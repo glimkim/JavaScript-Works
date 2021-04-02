@@ -21,12 +21,19 @@ io.on('connection', (socket) => { //서버쪽
             name
         });
     }); 
+    socket.on('profile', (data) => {
+        const { img } = data;
+        io.emit('profile', {
+            img
+        });
+    }); 
     socket.on('chatting', (data) => {
-        const { name, msg } = data;
+        const { name, msg, img } = data;
         io.emit('chatting', {
             name,
             msg,
+            img,
             time: moment(new Date()).format('h:mm A')
         });
-    });
+    }); //chat.js에 사용한 socket 내용 불러오기
 });
