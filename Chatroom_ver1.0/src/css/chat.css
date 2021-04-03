@@ -5,7 +5,7 @@ body, html{width:100vw; height:100vh; overflow:hidden;}
 button{ border:none; }
 li{ list-style:none; }
 
-.loader{ position:absolute; top:0; left:0; z-index:1000; display:flex; justify-content:center; align-items:center; width:100vw; height:100vh; background-color:#fff; transition:0.8s;}
+.loader{ position:absolute; top:0; left:0; z-index:1000; display:flex; justify-content:center; align-items:center; width:100%; height:100%; background-color:#fff; transition:0.8s;}
 .loader img{ width:30%; }
 
 header{ position:absolute; top:0; left:0; z-index:100; display:flex; justify-content:center; align-items:center; width:100%; height:60px; background-color:#fff; border-bottom:1px solid #ccc; }
@@ -29,7 +29,7 @@ header img{ width:120px; }
 
 .displayContainer{ flex:10; overflow-y:auto; }
 .chatList{ height:100%; }
-.chatList li{ display:flex; align-items:flex-end; padding:1rem; box-sizing:border-box;}
+.chatList li{ display:flex; align-items:flex-end; padding:1rem; box-sizing:border-box; word-break:break-all;}
 
 .profile{ display:flex; flex-direction:column; align-items:center; }
 .profile figure{ width:3rem; height:3rem; border-radius:50%; border:1px solid #ccc; overflow:hidden; }
@@ -38,7 +38,7 @@ header img{ width:120px; }
 
 .message { display:flex; align-items:flex-end; }
 .message .contents{ padding:0.5rem; box-sizing:border-box; border-radius:0.375rem; }
-.message .time{ font-size:0.75rem; color:#999; text-transform: lowercase; }
+.message .time{ font-size:0.75rem; color:#999; text-transform: lowercase; white-space:nowrap; }
 
 .sent, .sent .message{ flex-direction:row-reverse; }
 .sent .contents{ background-color:#C6DCFA; margin:0 1rem 0 0.5rem;}
@@ -50,3 +50,10 @@ header img{ width:120px; }
 #send{ flex:1; background-color:#EBEBFF; border-radius:0.5rem; }
 
 .chatList .inAlert{ padding:0.5rem; justify-content:center; background: rgb(144,228,253); background: radial-gradient(circle, rgba(144,228,253,0.8) 0%, rgba(184,184,244,0.8) 100%); color:#fff; font-weight:600;font-size:1.125rem; }
+
+@media screen and (max-width:767px){
+    *{font-size:16px;}
+    .loader img{ width:50%; }
+    #message{ flex:8; }
+    #send{ flex:2; }    
+}

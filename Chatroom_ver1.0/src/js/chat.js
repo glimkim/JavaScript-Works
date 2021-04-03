@@ -1,13 +1,16 @@
 'use strict'
 const socket = io();
+
 const loader = document.querySelector('.loader');
+
+const select01 = document.querySelector('.select01');
 const nickname = document.querySelector('#nickname');
 const nextButton01 = document.querySelector('#next01');
-const nextButton02 = document.querySelector('#next02');
-const select01 = document.querySelector('.select01');
-const select02 = document.querySelector('.select02');
-const myPicture = document.querySelector('.myPicture');
 
+const select02 = document.querySelector('.select02');
+const myPicture = document.querySelector('.myPicture'); 
+const nextButton02 = document.querySelector('#next02');
+       
 const chatRoom = document.querySelector('.chatRoom');
 const displayContainer = document.querySelector('.displayContainer');
 const chatList = document.querySelector('.chatList');
@@ -16,19 +19,23 @@ const sendButton = document.querySelector('#send');
 
 chatRoom.style.display = 'none';
 select02.style.display = 'none';
+
 window.onload = setTimeout(function(){
     loader.style.top = '-120%';
 }, 2000);
 
 const param = {}
-
 nextButton01.addEventListener('click', () => {
-    param.name = nickname.value;
-    socket.emit('inAlert', param);
-    select01.style.display = 'none';
-    select02.style.display = 'block';
+    if(nickname.value == ''){
+        alert('Please enter your nickname.');
+        nickname.focus();
+    }else{
+        param.name = nickname.value;
+        socket.emit('inAlert', param);
+        select01.style.display = 'none';
+        select02.style.display = 'block';
+    }
 });
-
 nickname.addEventListener('keypress', (e) => {
     if(e.keyCode === 13 && e.keyCode != 16){
         param.name = nickname.value;
@@ -36,13 +43,6 @@ nickname.addEventListener('keypress', (e) => {
         select01.style.display = 'none';
         select02.style.display = 'block';
     }
-});
-
-nextButton02.addEventListener('click', () => {
-    param.img = myPicture.src;
-    socket.emit('profile', param);
-    select02.style.display = 'none';
-    chatRoom.style.display = 'block';
 });
 
 const setProfile = (e) => {
@@ -55,6 +55,12 @@ const setProfile = (e) => {
     }
     reader.readAsDataURL(e.target.files[0]);
 }
+nextButton02.addEventListener('click', () => {
+    param.img = myPicture.src;
+    socket.emit('profile', param);
+    select02.style.display = 'none';
+    chatRoom.style.display = 'block';
+});
 
 socket.on('inAlert', (data) => {
     const inAlert = document.createElement('li');
@@ -68,7 +74,6 @@ sendButton.addEventListener('click', () => {
     socket.emit('chatting', param);
     message.value = '';
 });
-
 message.addEventListener('keypress', (e) => {
     if(e.keyCode === 13 && e.keyCode != 16){
         param.msg = message.value;
