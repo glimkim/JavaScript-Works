@@ -6,7 +6,7 @@ function LottoGenerator(){
     let num;
 
      for(var i=0;i<6;i++){
-        num = Math.round(Math.random() * 60);
+        num = Math.round(Math.random() * 45);
 
          for(var j in lotteryNumber){
             if(num == lotteryNumber[j] || num == 0){
@@ -31,8 +31,6 @@ function LottoGenerator(){
         }else if(li.textContent < 40){
             li.style.backgroundColor = '#ffd900';
             li.style.color = '#999';
-        }else if(li.textContent < 50){
-            li.style.backgroundColor = '#0090de ';
         }
         ul.appendChild(li);
     }

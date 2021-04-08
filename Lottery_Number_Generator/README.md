@@ -12,6 +12,6 @@
 
 ## Notable functions
 
-- to generate 6 random numbers between 1 to 60
+- to generate 6 random numbers between 1 to 45
 - to have different colors for each number spectrum
 - to reformulate new numbers without refreshing the webpage
