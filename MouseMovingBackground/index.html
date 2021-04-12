@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+
+        <style>
+            html, body {
+            min-height: 100%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            }
+
+            .background-image {
+            width: 110%;
+            height: 110%;
+            left: 0;
+            top: 0;
+            position: absolute;
+            background: url(bg.jpg) no-repeat left center / cover;
+            transform: translate3d(0,0,0);
+            transition:0.3s linear;
+            transform-style: preserve-3d;
+          
+            }
+
+        </style>
+        
+    </head>
+    <body>
+        <div class="background-image"></div>
+        <script>
+            
+            const windowWidth = window.innerWidth / 5; 
+            const windowHeight = window.innerHeight / 5;
+
+            const hoverEffect = () => {
+                this.addEventListener('mousemove', (e) => {
+                    const mouseX = e.clientX / windowWidth;
+                    const mouseY = e.clientY / windowHeight;
+                    
+                    e.target.style.transform = `translate3d(-${mouseX}%, -${mouseY}%, 0)`;
+                });
+                
+            }
+
+            const bg = document.querySelector('.background-image');
+
+            bg.addEventListener('mousemove', hoverEffect);
+        </script>
+    </body>
+</html>
