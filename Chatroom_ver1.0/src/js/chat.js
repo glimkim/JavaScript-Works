@@ -110,7 +110,6 @@ function LiModel(name, msg, img, time){
 }
 
 socket.on('chatting', (data) => {
-    console.log(data);
     const {name, msg, img, time} = data;
     const aMessage = new LiModel(name, msg, img, time);
     aMessage.makeLi();

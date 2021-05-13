@@ -14,7 +14,7 @@ const PORT = process.env.PORT || 5000;
 
 server.listen(PORT, () => {console.log(`Server is running at ${PORT}`)});
 
-io.on('connection', (socket) => { //서버쪽
+io.on('connection', (socket) => { 
     socket.on('inAlert', (data) => {
         const { name } = data;
         io.emit('inAlert', {
@@ -35,5 +35,5 @@ io.on('connection', (socket) => { //서버쪽
             img,
             time: moment(new Date()).format('h:mm A')
         });
-    }); //chat.js에 사용한 socket 내용 불러오기
+    }); 
 });
