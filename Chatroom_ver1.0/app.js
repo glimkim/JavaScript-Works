@@ -4,7 +4,7 @@ const http = require('http');
 const server = http.createServer(app);
 const socketIO = require('socket.io');
 const path = require('path');
-const moment = require('moment');
+const moment = require('moment-timezone');
 
 const io = socketIO(server);
 
@@ -33,7 +33,7 @@ io.on('connection', (socket) => {
             name,
             msg,
             img,
-            time: moment(new Date()).format('h:mm A')
+            time: moment(new Date()).tz("Asia/Seoul").format('h:mm A')
         });
     }); 
 });
