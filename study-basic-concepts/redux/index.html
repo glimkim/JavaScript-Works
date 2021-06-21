@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.1.0/redux.min.js" integrity="sha512-F21iSaHGX/3NFz5SuwoH6pGhTPxtoJoWWULqQVPQPtLm7nbK5r8vRSSSYy3Aj+H39cVrVm4+3ikGoVD1AjE0sQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+    <div id="red"></div>
+    <div id="blue"></div>
+    <div id="green"></div>
+    
+    <script>
+        function reducer(state, action){//원본을 변경하면 안되고 독립된 데이터로 복제해야함
+            console.log(state, action)
+            if(state === undefined){
+                return {color:"yellow"} //초기 스테이트 값
+            }
+            let newState;
+            if(action.type === "CHANGE_COLOR"){
+                newState = Object.assign({}, state, {color: action.color});
+            }
+            console.log(action.type, action, state, newState)
+            return newState;
+        }
+        const store = Redux.createStore(
+            reducer,
+            window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+        );
+        
+        function red(){
+            const state = store.getState();
+            document.querySelector("#red").innerHTML = `
+            <div class="container" id="component_red" style=
+            "background-color:${state.color}">
+                <h1>red</h1>
+                <input type="button" value="fire" onclick="
+                    store.dispatch({type:'CHANGE_COLOR', color:'red'});
+                " />
+            </div>`;
+        }
+        store.subscribe(red);
+        red();
+
+        function blue(){
+            const state = store.getState();
+            document.querySelector("#blue").innerHTML = `
+            <div class="container" id="component_blue" style=
+            "background-color:${state.color}">
+                <h1>blue</h1>
+                <input type="button" value="fire" onclick="
+                    store.dispatch({type:'CHANGE_COLOR', color:'blue'});
+                " />
+            </div>`;
+        }
+        store.subscribe(blue);
+        blue();
+
+        function green(){
+            const state = store.getState();
+            document.querySelector("#green").innerHTML = `
+            <div class="container" id="component_green" style=
+            "background-color:${state.color}">
+                <h1>green</h1>
+                <input type="button" value="fire" onclick="
+                    store.dispatch({type:'CHANGE_COLOR', color:'green'});
+                " />
+            </div>`;
+        }
+        store.subscribe(green);
+        green();
+    </script>
+</body>
+</html>
+
+<!-- 
+    리덕스를 사용하는 이유
+    각각의 컴포넌트가 독립성을 가지게 됨 
+-->
